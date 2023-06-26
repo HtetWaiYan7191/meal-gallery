@@ -20,11 +20,11 @@ body {
 
 header, footer {
     padding: 1rem;
-    background-color:#76726e;
+    background-color:#a09991;
 }
 
 footer h3 {
-    font-size: 1.5rem;
+   font-size: 1.5rem;
    margin: 0.7rem 0;
    text-align: center;
     color: #fff;
@@ -37,11 +37,22 @@ footer h3 {
     margin: 1rem auto;
 }
 
+.regular-red {
+    color: red;
+}
+
+.red {
+    color: red;
+}
+
 nav {
     width:80% ;
     margin: 0 auto;
 }
 
+.fa-heart {
+    cursor: pointer;
+}
 
 .fa-heart, .reaction-container span {
     font-size: 20px;
