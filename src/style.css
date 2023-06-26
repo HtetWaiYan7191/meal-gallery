@@ -34,10 +34,17 @@ nav {
 }
 
 .meal-card {
-    background-color: aqua;
     padding: 2rem 1rem;
 }
 
 .button-container {
     height: 80px;
+}
+
+.meal-title {
+    font-size: 25px;
+}
+
+.meal-images {
+    width: 100%;
 }
