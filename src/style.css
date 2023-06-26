@@ -36,6 +36,13 @@ footer h3 {
     color: #f19f42;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 1rem auto;
+    animation: slideIn 2s forwards 0.5s; 
+}
+
+.slideIn {
+   
+    opacity: 1;
+    
 }
 
 #counter-meal {
@@ -161,4 +168,14 @@ figcaption {
 .meal-images {
     width: 50%;
     border-radius: 15px;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
