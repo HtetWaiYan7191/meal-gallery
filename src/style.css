@@ -27,3 +27,17 @@ nav {
 #logo-image {
     width: 200px;
 }
+
+.meal-card-container {
+    width: 80%;
+    margin: 1rem auto;
+}
+
+.meal-card {
+    background-color: aqua;
+    padding: 2rem 1rem;
+}
+
+.button-container {
+    height: 80px;
+}
