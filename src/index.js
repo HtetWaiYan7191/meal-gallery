@@ -61,8 +61,8 @@ const sendReactionToApi = async (likeBtn) => {
 
 const createMealCard = async (meal, id) => {
   mealCardContainer.innerHTML += `
-    <div class="meal-card" data-id = "${meal.idMeal}">
-    <figure class="">
+    <div class="meal-card col-4" data-id = "${meal.idMeal}">
+    <figure class="text-center">
         <img src="${meal.strMealThumb}" alt="meal-image" class="meal-images">
     </figure>
     <figcaption class="d-flex justify-content-between">
@@ -72,9 +72,8 @@ const createMealCard = async (meal, id) => {
             <span></span>
         </div>
     </figcaption>
-    <div class="button-container d-flex flex-column justify-content-around">
-        <button>Comments</button>   
-        <button>Reservations</button>
+    <div class="button-container">
+        <button class="comment-button">Comments</button>   
     </div>
 </div>`;
 
