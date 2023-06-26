@@ -1,4 +1,5 @@
 import './style.css';
+import { drawComment } from './modules/comment';
 
 const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
 const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
@@ -29,7 +30,10 @@ const createNewApp = async () => {
   return data;
 };
 
-appId = await createNewApp();
+appId = '42KEY0UYG6OxPtw2i64k';
+// sMAr6vLw7rPNZvgt4rVT
+// appId = await createNewApp();
+// console.log(appId);
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -73,10 +77,18 @@ const createMealCard = async (meal, id) => {
         </div>
     </figcaption>
     <div class="button-container d-flex flex-column justify-content-around">
-        <button>Comments</button>   
+        <button id="commentBtn">Comments</button>
         <button>Reservations</button>
     </div>
 </div>`;
+const commentBtn = document.querySelectorAll('#commentBtn');
+  commentBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      console.log(e.target.parentElement.parentElement.dataset.id);
+      drawComment(e.target.parentElement.parentElement.dataset.id)
+    });
+  });
+
 
   const likeBtns = document.querySelectorAll('.fa-heart');
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
@@ -87,3 +99,5 @@ const fetchMeal = async () => {
 };
 
 await fetchMeal();
+
+export { appId, baseMealUrl, baseReactionUrl };
