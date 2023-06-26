@@ -1,3 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+
+}
+
 body {
-    background-color: bisque;
+
+}
+
+header {
+    padding: 1rem;
+     background-color: aliceblue;
+}
+
+nav {
+    width:80% ;
+    margin: 0 auto;
+}
+
+#logo-image {
+    width: 200px;
 }
