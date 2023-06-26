@@ -13,6 +13,18 @@ const getTotalMeal = async () => {
 
 meals = await getTotalMeal();
 
+const heartAnimation = (reactionBtn) => {
+  reactionBtn.addEventListener('mouseover', (e) => {
+    e.target.classList.add('fa-beat-fade');
+    e.target.classList.add('regular-red');
+  });
+
+  reactionBtn.addEventListener('mouseout', (e) => {
+    e.target.classList.remove('regular-red');
+    e.target.classList.remove('fa-beat-fade');
+  });
+};
+
 const createNewApp = async () => {
   if (appId) {
     return appId;
@@ -40,6 +52,10 @@ const getReaction = async () => {
 
 const sendReactionToApi = async (likeBtn) => {
   likeBtn.addEventListener('click', async (e) => {
+    e.target.classList.remove('fa-beat-fade');
+    e.target.classList.remove('fa-regular');
+    e.target.classList.add('fa-solid');
+    e.target.classList.add('red');
     // id = start from 0 ;
     const reactions = { item_id: `${e.target.id}` };
     const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -56,6 +72,7 @@ const sendReactionToApi = async (likeBtn) => {
     const reactionNumbers = await getReaction();
     const currentId = reactionNumbers.length - 1;
     e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
+    e.target.classList.remove('fa-beat-fade');
   });
 };
 
@@ -79,6 +96,7 @@ const createMealCard = async (meal, id) => {
 
   const likeBtns = document.querySelectorAll('.fa-heart');
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
+  likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
 };
 
 const fetchMeal = async () => {
