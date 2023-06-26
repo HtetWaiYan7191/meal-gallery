@@ -33,8 +33,14 @@ footer h3 {
 .title h1 {
     font-size: 4rem;
     font-weight: bold;
+    color: #f19f42;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 1rem auto;
+}
+
+#counter-meal {
+    font-size: 2rem;
+    color: white;
 }
 
 .regular-red {
@@ -59,7 +65,7 @@ nav {
 }
 
 nav ul li {
-    color: #fff;
+    color: #333;
     font-weight: 500;
     font-size: 18px;
     cursor: pointer;
@@ -70,7 +76,14 @@ nav ul li:hover {
     transform: scale(1.2);
     font-weight: 600;
     transition: all 0.6s ease;
-    color: #333;
+    color: #fff;
+}
+
+nav ul li:hover #counter-meal {
+    transform: scale(1.2);
+    font-weight: 600;
+    transition: all 0.5s ease 0.3s;
+    color:red;
 }
 
 #logo-image {
