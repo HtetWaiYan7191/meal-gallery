@@ -1,10 +1,12 @@
 import './style.css';
 
+const counterMeal = document.getElementById('counter-meal');
 const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
 const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
 const mealCardContainer = document.querySelector('.meal-card-container');
 let meals = [];
 let appId;
+
 const getTotalMeal = async () => {
   const result = await fetch(`${baseMealUrl}/filter.php?a=Canadian`);
   const { meals } = await result.json();
@@ -104,3 +106,9 @@ const fetchMeal = async () => {
 };
 
 await fetchMeal();
+
+const countTotalMeals = (counterMeal) => {
+  counterMeal.textContent = `(${meals.length})`;
+};
+
+window.addEventListener('DOMContentLoaded', countTotalMeals(counterMeal));
