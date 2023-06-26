@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Kalam:wght@300;400;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,500;0,600;0,700;1,200;1,400;1,500;1,700&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&family=Space+Mono&family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Ysabeau+SC:wght@1;100;200;300;400;500;600;700;800;900&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +6,7 @@
     list-style: none;
     text-decoration: none;
     color: #606C5D;
+    font-family: 'Ysabeau SC', sans-serif;
 }
 
 :root {
@@ -13,17 +15,26 @@
 }
 
 body {
-    background-color: #f2f2c9;
+    /* background-color: #f2f2c9; */
 }
 
-header {
+header, footer {
     padding: 1rem;
-    background-color:#6f6b65;
+    background-color:#76726e;
+}
+
+footer h3 {
+    font-size: 1.5rem;
+   margin: 0.7rem 0;
+   text-align: center;
+    color: #fff;
 }
 
 .title h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 1rem auto;
 }
 
 nav {
@@ -49,19 +60,28 @@ nav ul li {
     width: 90%;
     margin: 10px auto;
 }
+figcaption {
+    width: 63%;
+    margin: 0.3rem auto;
+}
 
+.button-container {
+    width: 61%;
+    margin: 0.4rem auto;
+}
 .meal-card {
     width: calc(33.33% - 20px);
     margin: 10px;
-    border: 1px solid #f5f5f5;
+    border: 1px solid inherit;
     padding: 0.7rem 2rem;
     border-radius: 10px;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
     
 }
 
 .meal-card:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #f2f2c9;
     transition: all 0.6s ease;
 }
 
