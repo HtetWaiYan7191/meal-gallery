@@ -14,52 +14,50 @@ const getTotalMeal = async () => {
 meals = await getTotalMeal();
 
 const createNewApp = async () => {
-    if(appId) {
-        return appId;
-    }
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json; charset=UTF-8',
-        },
-    }
+  if (appId) {
+    return appId;
+  }
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json; charset=UTF-8',
+    },
+  };
 
-    const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
-    const data = await result.text();
-    return data;
-}
+  const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
+  const data = await result.text();
+  return data;
+};
 
- appId = await createNewApp();
+appId = await createNewApp();
 
 const getReaction = async () => {
-    const url = `${baseReactionUrl}/apps/${appId}/likes`;
-    const result = await fetch(`${url}`);
-    const data = await result.json();
-    console.log(data)
-    return data;
-}
+  const url = `${baseReactionUrl}/apps/${appId}/likes`;
+  const result = await fetch(`${url}`);
+  const data = await result.json();
+  return data;
+};
 
 const sendReactionToApi = async (likeBtn) => {
-    likeBtn.addEventListener('click', async (e) => {
-        // id = start from 0 ;
-        const reactions = { item_id: `${e.target.id}` };
-        const url = `${baseReactionUrl}/apps/${appId}/likes`;
+  likeBtn.addEventListener('click', async (e) => {
+    // id = start from 0 ;
+    const reactions = { item_id: `${e.target.id}` };
+    const url = `${baseReactionUrl}/apps/${appId}/likes`;
 
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify(reactions),
-          };
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(reactions),
+    };
 
-           await fetch(`${url}`, requestOptions);
-            const reactionNumbers = await getReaction();
-            const currentId = reactionNumbers.length - 1;
-            e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
-    })
-}
-
+    await fetch(`${url}`, requestOptions);
+    const reactionNumbers = await getReaction();
+    const currentId = reactionNumbers.length - 1;
+    e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
+  });
+};
 
 const createMealCard = async (meal, id) => {
   mealCardContainer.innerHTML += `
@@ -80,8 +78,8 @@ const createMealCard = async (meal, id) => {
     </div>
 </div>`;
 
-const likeBtns = document.querySelectorAll('.fa-heart');
-likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
+  const likeBtns = document.querySelectorAll('.fa-heart');
+  likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
 };
 
 const fetchMeal = async () => {
