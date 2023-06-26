@@ -87,12 +87,12 @@ nav ul li:hover {
     margin: 10px auto;
 }
 figcaption {
-    width: 63%;
+    width: 100%;
     margin: 0.3rem auto;
 }
 
 .button-container {
-    width: 61%;
+    width: 95%;
     margin: 0.4rem auto;
 }
 .meal-card {
