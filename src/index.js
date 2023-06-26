@@ -52,7 +52,6 @@ const getReaction = async () => {
 
 const sendReactionToApi = async (likeBtn) => {
   likeBtn.addEventListener('click', async (e) => {
-    e.target.classList.remove('fa-shake');
     e.target.classList.remove('fa-regular');
     e.target.classList.add('fa-bounce');
     e.target.classList.add('fa-solid');
