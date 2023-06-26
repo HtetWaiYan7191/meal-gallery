@@ -93,9 +93,15 @@ nav ul li:hover #counter-meal {
   color: red;
 }
 
+.img-contaienr {
+  background-color: #f19f42;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 100px;
+}
+
 #logo-image {
-  width: 300px;
-  background-color: yellow;
+  width: 100px;
 }
 
 .meal-card-container {
