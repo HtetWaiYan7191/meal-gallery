@@ -194,32 +194,6 @@ figcaption {
   }
 }
 
-/* #logo-image {
-  width: 300px;
-  background-color: yellow;
-}
-
-.meal-card-container {
-  width: 80%;
-  margin: 1rem auto;
-}
-
-.meal-card {
-  padding: 2rem 1rem;
-}
-
-.button-container {
-  height: 80px;
-}
-
-.meal-title {
-  font-size: 25px;
-}
-
-.meal-images {
-  width: 100%;
-} */
-
 button {
   background-color: var(--primary);
 }
