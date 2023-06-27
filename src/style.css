@@ -86,6 +86,15 @@ form > * {
   width: 100%;
 }
 
+.close {
+  position: relative;
+  top: 0;
+  left: 45%;
+  font-size: 32px;
+  padding: 8px;
+  cursor: pointer;
+}
+
 .card-content {
   width: 45%;
   height: 95%;
