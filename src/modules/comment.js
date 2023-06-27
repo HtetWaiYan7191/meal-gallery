@@ -1,4 +1,4 @@
-import { appId, baseMealUrl, baseReactionUrl } from "../index.js";
+import { appId, baseMealUrl, baseReactionUrl } from './base.js';
 
 const getMeal = async (id) => {
   const result = await fetch(`${baseMealUrl}/lookup.php?i=${id}`);
@@ -6,15 +6,13 @@ const getMeal = async (id) => {
   return meals[0];
 };
 
-const drawComment = async (id) => {
-  console.log(appId, baseMealUrl, baseReactionUrl);
+export const drawComment = async (id) => {
   document.body.style.overflow = 'hidden';
   const modal = document.createElement('div');
   modal.classList.add('popup');
   const cardContent = document.createElement('div');
   cardContent.classList.add('card-content');
   const meal = await getMeal(id);
-  console.log(meal);
   cardContent.innerHTML = `
     <img src="${meal.strMealThumb}" alt="Image of food">
     <h2>${meal.strMeal}</h2>
@@ -36,7 +34,7 @@ const drawComment = async (id) => {
   comments.classList.add('comments');
   const commentTitle = document.createElement('h3');
   commentTitle.classList.add('comment-title');
-  commentTitle.textContent = `Comments (0)`;
+  commentTitle.textContent = 'Comments';
   cardContent.appendChild(commentTitle);
 
   cardContent.appendChild(comments);
@@ -44,6 +42,5 @@ const drawComment = async (id) => {
     <h3>Leave a comment</h3>
   `;
   document.body.appendChild(modal);
-}
+};
 
-export { drawComment };

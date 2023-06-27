@@ -1,11 +1,11 @@
 import './style.css';
-import { drawComment } from './modules/comment';
+import { drawComment } from './modules/comment.js';
+import { appId, baseMealUrl, baseReactionUrl } from './modules/base.js';
 
-const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
-const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+console.log(baseMealUrl);
+
 const mealCardContainer = document.querySelector('.meal-card-container');
 let meals = [];
-let appId;
 const getTotalMeal = async () => {
   const result = await fetch(`${baseMealUrl}/filter.php?a=Canadian`);
   const { meals } = await result.json();
@@ -15,9 +15,6 @@ const getTotalMeal = async () => {
 meals = await getTotalMeal();
 
 const createNewApp = async () => {
-  if (appId) {
-    return appId;
-  }
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -30,7 +27,8 @@ const createNewApp = async () => {
   return data;
 };
 
-appId = await createNewApp();
+const Id = await createNewApp();
+console.log(Id);
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -84,8 +82,7 @@ const createMealCard = async (meal, id) => {
   const commentBtn = document.querySelectorAll('#commentBtn');
   commentBtn.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      console.log(e.target.parentElement.parentElement.dataset.id);
-      drawComment(e.target.parentElement.parentElement.dataset.id)
+      drawComment(e.target.parentElement.parentElement.dataset.id);
     });
   });
 };
