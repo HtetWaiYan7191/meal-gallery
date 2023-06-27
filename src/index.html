@@ -10,21 +10,23 @@
     <header>
         <nav>
             <ul class="d-flex justify-content-around align-items-center">
-                <li><img src="../images/logo-image.png" alt="logo-image" id="logo-image"></li>
-                <li>Today's Meals</li>
-                <li>Dessert</li>
-                <li>Breakfast</li>
+                <a href="#"><li class="img-container"><img src="./images/logo-image.png" alt="" id="logo-image"></li></a>
+                <a href="#/"><li>Today's Meals <span id="counter-meal"></span></li></a>
+                <a href="#/"><li>Dessert</li></a>
+                <a href="#/"><li>Breakfast</li></a>
             </ul>
         </nav>
     </header>
-    <div class="title text-center my-3">
-        <h1>Meal Gallery</h1>
+    <div class="title text-center my-4">
+        <h1 id="main-title">Meal Gallery</h1>
     </div>
     <main>
-        <div class="meal-card-container row row-cols-3 row-cols-md-3">
+        <div class="meal-card-container row gx-4 gy-4">
         </div>
     </main>
-
+    <footer>
+        <h3>Created By Microverse under CC license</h3>
+    </footer>
     <script src="https://kit.fontawesome.com/9e6b5903a6.js" crossorigin="anonymous"></script>
 </body>
 </html>
