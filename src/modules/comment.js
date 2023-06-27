@@ -56,7 +56,6 @@ const drawForm = (id) => {
   return form;
 };
 
-
 const drawComment = async (id) => {
   document.body.style.overflow = 'hidden';
   const modal = document.createElement('div');

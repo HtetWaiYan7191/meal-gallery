@@ -2,6 +2,7 @@ import './style.css';
 import drawComment from './modules/comment.js';
 import { appId, baseMealUrl, baseReactionUrl } from './modules/base.js';
 import countTotalMeals from './modules/countTotalMeal';
+
 const counterMeal = document.getElementById('counter-meal');
 
 const mealCardContainer = document.querySelector('.meal-card-container');
@@ -26,7 +27,6 @@ const heartAnimation = (reactionBtn) => {
     e.target.classList.remove('fa-beat-fade');
   });
 };
-
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -101,7 +101,6 @@ const createMealCard = async (meals) => {
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn, reactionCounts));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
   showReaction(reactionCounts);
-
 
   const commentBtn = document.querySelectorAll('#commentBtn');
   commentBtn.forEach((btn) => {
