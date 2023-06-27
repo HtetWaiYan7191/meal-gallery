@@ -1,4 +1,4 @@
-import { baseMealUrl } from './base.js';
+import { baseMealUrl, baseReactionUrl, appId } from './base.js';
 
 const getMeal = async (id) => {
   const result = await fetch(`${baseMealUrl}/lookup.php?i=${id}`);
@@ -6,14 +6,30 @@ const getMeal = async (id) => {
   return meals[0];
 };
 
+const getComments = async (id) => {
+  const result = await fetch(`${baseReactionUrl}/apps/${appId}/comments?item_id=${id}`);
+  const data = await result.json();
+  return data;
+};
+
 const drawComment = async (id) => {
   document.body.style.overflow = 'hidden';
   const modal = document.createElement('div');
   modal.classList.add('popup');
   const cardContent = document.createElement('div');
+  cardContent.addEventListener('click', (e) => {
+    console.log(e.target);
+    if (e.target.classList.contains('close')) {
+      document.body.style.overflow = 'auto';
+      modal.remove();
+    }
+  });
   cardContent.classList.add('card-content');
   const meal = await getMeal(id);
-  cardContent.innerHTML = `
+  const close = document.createElement('i');
+  close.classList.add('fas', 'fa-times', 'close');
+  cardContent.appendChild(close);
+  cardContent.innerHTML += `
     <img src="${meal.strMealThumb}" alt="Image of food">
     <h2>${meal.strMeal}</h2>
     <div id="details">
@@ -34,8 +50,18 @@ const drawComment = async (id) => {
   comments.classList.add('comments');
   const commentTitle = document.createElement('h3');
   commentTitle.classList.add('comment-title');
-  commentTitle.textContent = 'Comments';
+  const commentList = await getComments(id);
+  console.log(commentList);
+  commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
+  if (Object.keys(commentList)[0] !== 'error') {
+    commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
+    for (let i = 0; i < Object.keys(commentList).length; i += 1) {
+      comments.innerHTML += `
+        <p class="comment-item">${commentList[i].creation_date} <b>${commentList[i].username}</b>: ${commentList[i].comment}</p>
+      `;
+    }
+  }
 
   cardContent.appendChild(comments);
   cardContent.innerHTML += `
