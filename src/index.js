@@ -1,12 +1,11 @@
 import './style.css';
+import drawComment from './modules/comment.js';
+import { appId, baseMealUrl, baseReactionUrl } from './modules/base.js';
 import countTotalMeals from './modules/countTotalMeal';
-
 const counterMeal = document.getElementById('counter-meal');
-const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
-const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
+
 const mealCardContainer = document.querySelector('.meal-card-container');
 let meals = [];
-const appId = 'oB8tDVQp5SAk9GcmBZH5';
 
 const getTotalMeal = async () => {
   const result = await fetch(`${baseMealUrl}/filter.php?a=Canadian`);
@@ -28,21 +27,6 @@ const heartAnimation = (reactionBtn) => {
   });
 };
 
-// const createNewApp = async () => {
-//   if (appId) {
-//     return appId;
-//   }
-//   const requestOptions = {
-//     method: 'POST',
-//     headers: {
-//       'content-type': 'application/json; charset=UTF-8',
-//     },
-//   };
-
-//   const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
-//   const data = await result.text();
-//   return data;
-// };
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -105,8 +89,9 @@ const createMealCard = async (meals) => {
             <span id="${id}" class="reaction-counts"></span>
         </div>
     </figcaption>
-    <div class="button-container">
-        <button class="comment-button">Comments</button>   
+
+    <div class="button-container d-flex flex-column justify-content-around">
+        <button class="comment-button" id="commentBtn">Comments</button>   
     </div>
 </div>`;
   });
@@ -116,6 +101,14 @@ const createMealCard = async (meals) => {
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn, reactionCounts));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
   showReaction(reactionCounts);
+
+
+  const commentBtn = document.querySelectorAll('#commentBtn');
+  commentBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      drawComment(e.target.parentElement.parentElement.dataset.id);
+    });
+  });
 };
 
 const fetchMeal = async () => {
@@ -125,3 +118,4 @@ const fetchMeal = async () => {
 await fetchMeal();
 
 window.addEventListener('DOMContentLoaded', countTotalMeals(counterMeal, meals));
+export { appId, baseMealUrl, baseReactionUrl };

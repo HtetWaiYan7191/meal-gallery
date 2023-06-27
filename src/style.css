@@ -13,6 +13,11 @@
 :root {
   --text-color: #606c5d;
   --background-color: #f1f6f9;
+  --primary: #eea64f;
+  --secondary: #382106;
+  --accent: #f0b266;
+  --background: #251604;
+  --text: #fcefdf;
 }
 
 body {
@@ -56,7 +61,9 @@ footer h3 {
 
 .red {
   color: red;
+
 }
+
 
 nav {
   width: 80%;
@@ -158,6 +165,7 @@ figcaption {
 
 .comment-button {
   padding: 5px 8px;
+  width: 100%;
   border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -186,4 +194,158 @@ figcaption {
   100% {
     transform: translateX(0);
   }
+}
+
+/* #logo-image {
+  width: 300px;
+  background-color: yellow;
+}
+
+.meal-card-container {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.meal-card {
+  padding: 2rem 1rem;
+}
+
+.button-container {
+  height: 80px;
+}
+
+.meal-title {
+  font-size: 25px;
+}
+
+.meal-images {
+  width: 100%;
+} */
+
+button {
+  background-color: var(--primary);
+}
+
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  font-size: 22px;
+}
+
+form > * {
+  margin: 8px;
+  padding: 8px;
+  width: 100%;
+}
+
+.close {
+  position: relative;
+  top: 0;
+  left: 45%;
+  font-size: 32px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.card-content {
+  width: 45%;
+  height: 95%;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 32px;
+  overflow: hidden;
+  background-color: #f2f2c9;
+
+  /* scroll */
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+}
+
+.card-content::-webkit-scrollbar {
+  display: none;
+}
+
+.card-content > * {
+  margin-block: 8px;
+}
+
+.card-content img {
+  height: 35%;
+  width: 70%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card-content h3 {
+  font-size: 34px;
+}
+
+#details {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  font-size: 24px;
+}
+
+#details > * {
+  margin: 8px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 14%;
+  font-size: 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  padding-block: 8px;
+}
+
+.comments::-webkit-scrollbar {
+  display: none;
+}
+
+.comment-item {
+  height: 30px;
+}
+
+form input[type="submit"] {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 22px;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+b {
+  color: var(--accent);
 }
