@@ -104,8 +104,8 @@ const createMealCard = async (meal, id) => {
 
   const likeBtns = document.querySelectorAll('.fa-heart');
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
-  likeBtns.forEach((likeBtn, i) => showReaction(likeBtn, i));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
+  showReaction()
 };
 
 const fetchMeal = async () => {

@@ -46,8 +46,8 @@ footer h3 {
 }
 
 #counter-meal {
-  font-size: 2rem;
-  color: white;
+  font-size: 23px;
+  color: #333;
 }
 
 .regular-red {
@@ -79,7 +79,7 @@ nav ul a {
 nav ul li {
   color: #333;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 23px;
   cursor: pointer;
 }
 
