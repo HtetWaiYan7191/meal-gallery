@@ -12,6 +12,52 @@ const getComments = async (id) => {
   return data;
 };
 
+const drawForm = (id) => {
+  const form = document.createElement('form');
+  form.classList.add('comment-form');
+  form.innerHTML = `
+    <input type="text" name="name" placeholder="Your name" required>
+    <textarea name="comment" placeholder="Your comment" required></textarea>
+    <input type="submit" value="Submit">
+  `;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const { name, comment } = e.target;
+    const commentData = {
+      item_id: id,
+      username: name.value,
+      comment: comment.value,
+    };
+    const comments = document.querySelector('.comments');
+    const date = new Date();
+    let dateString;
+
+    dateString = `
+    ${date.getFullYear()}-
+    ${('0' + (date.getMonth() + 1)).slice(-2)}-
+    ${('0' + date.getDate()).slice(-2)}
+    `;
+    comments.innerHTML += `
+      <p class="comment-item">${dateString} <b>${commentData.username}</b>: ${commentData.comment}</p>
+    `;
+    const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments`;
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(commentData),
+    };
+    await fetch(`${url}`, requestOptions);
+    form.reset();
+    const commentTitle = document.querySelector('.comment-title');
+    const commentList = await getComments(id);
+    console.log(commentList);
+    commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
+  });
+  return form;
+};
+
 const drawComment = async (id) => {
   document.body.style.overflow = 'hidden';
   const modal = document.createElement('div');
@@ -44,7 +90,7 @@ const drawComment = async (id) => {
   console.log(commentList);
   commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
-  if (!Object.keys(commentList)[0] === 'error') {
+  if (Object.keys(commentList)[0] !== 'error') {
     commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
     for (let i = 0; i < Object.keys(commentList).length; i += 1) {
       comments.innerHTML += `
@@ -58,6 +104,8 @@ const drawComment = async (id) => {
     <h3>Leave a comment</h3>
   `;
   document.body.appendChild(modal);
+
+  cardContent.appendChild(drawForm(id));
 };
 
 export default drawComment;
