@@ -1,4 +1,5 @@
 import './style.css';
+import countTotalMeals from './modules/countTotalMeal';
 
 const counterMeal = document.getElementById('counter-meal');
 const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
@@ -107,8 +108,4 @@ const fetchMeal = async () => {
 
 await fetchMeal();
 
-const countTotalMeals = (counterMeal) => {
-  counterMeal.textContent = `(${meals.length})`;
-};
-
-window.addEventListener('DOMContentLoaded', countTotalMeals(counterMeal));
+window.addEventListener('DOMContentLoaded', countTotalMeals(counterMeal, meals));
