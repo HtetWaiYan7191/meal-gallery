@@ -101,7 +101,8 @@ nav ul li:hover #counter-meal {
 }
 
 #logo-image {
-  width: 100px;
+  width: 20%;
+  border-radius: 50%;
 }
 
 .meal-card-container {
