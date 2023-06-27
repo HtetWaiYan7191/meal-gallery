@@ -12,19 +12,6 @@ const getTotalMeal = async () => {
 
 meals = await getTotalMeal();
 
-const createNewApp = async () => {
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json; charset=UTF-8',
-    },
-  };
-
-  const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
-  const data = await result.text();
-  return data;
-};
-
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
   const result = await fetch(`${url}`);
