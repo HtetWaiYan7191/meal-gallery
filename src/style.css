@@ -61,9 +61,7 @@ footer h3 {
 
 .red {
   color: red;
-
 }
-
 
 nav {
   width: 80%;
@@ -265,7 +263,6 @@ form > * {
 .card-content {
   width: 45%;
   height: 95%;
-  background-color: var(--secondary);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
