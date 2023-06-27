@@ -6,7 +6,7 @@ const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
 const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
 const mealCardContainer = document.querySelector('.meal-card-container');
 let meals = [];
-let appId;
+const appId = 'oB8tDVQp5SAk9GcmBZH5';
 
 const getTotalMeal = async () => {
   const result = await fetch(`${baseMealUrl}/filter.php?a=Canadian`);
@@ -44,8 +44,6 @@ const createNewApp = async () => {
   return data;
 };
 
-appId = await createNewApp();
-
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
   const result = await fetch(`${url}`);
@@ -77,8 +75,13 @@ const sendReactionToApi = async (likeBtn) => {
       const currentId = reactionNumbers.length - 1;
       e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
       e.target.classList.remove('fa-bounce');
-    };
+    }
   });
+};
+
+const showReaction = async (likeBtn, i) => {
+  const reactionNumbers = await getReaction();
+  console.log(reactionNumbers);
 };
 
 const createMealCard = async (meal, id) => {
@@ -101,6 +104,7 @@ const createMealCard = async (meal, id) => {
 
   const likeBtns = document.querySelectorAll('.fa-heart');
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
+  likeBtns.forEach((likeBtn, i) => showReaction(likeBtn, i));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
 };
 
