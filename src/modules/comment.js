@@ -63,6 +63,9 @@ const drawComment = async (id) => {
   modal.classList.add('popup');
   const cardContent = document.createElement('div');
   cardContent.classList.add('card-content');
+  const close = document.createElement('i');
+  close.classList.add('fas', 'fa-times', 'close');
+  cardContent.appendChild(close);
   const meal = await getMeal(id);
   cardContent.innerHTML = `
     <img src="${meal.strMealThumb}" alt="Image of food">
@@ -76,7 +79,7 @@ const drawComment = async (id) => {
   modal.appendChild(cardContent);
   modal.style.display = 'flex';
   modal.addEventListener('click', (e) => {
-    if (e.target.classList.contains('popup')) {
+    if (e.target.classList.contains('popup') || e.target.classList.contains('close')) {
       document.body.style.overflow = 'auto';
       modal.remove();
     }

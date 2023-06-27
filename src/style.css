@@ -105,6 +105,15 @@ form > * {
   -ms-overflow-style: none;
 }
 
+.close {
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 .card-content::-webkit-scrollbar {
   display: none;
 }
