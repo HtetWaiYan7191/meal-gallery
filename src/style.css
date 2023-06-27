@@ -114,6 +114,15 @@ form > * {
   -ms-overflow-style: none;
 }
 
+.close {
+  position: relative;
+  top: 0;
+  left: 44%;
+  padding: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 .card-content::-webkit-scrollbar {
   display: none;
 }
@@ -123,11 +132,10 @@ form > * {
 }
 
 .card-content img {
-  height: 30%;
-  width: 90%;
+  height: 35%;
+  width: 70%;
   border-radius: 10px;
-  object-fit: cover;
-  margin-top: 40px;
+  margin-top: 0;
 }
 
 .card-content h3 {
@@ -150,7 +158,7 @@ form > * {
   display: flex;
   flex-direction: column;
   width: 50%;
-  max-height: 14%;
+  min-height: 14%;
   font-size: 20px;
   overflow-y: scroll;
   scrollbar-width: none;
