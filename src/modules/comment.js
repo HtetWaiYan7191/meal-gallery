@@ -1,4 +1,4 @@
-import { appId, baseMealUrl, baseReactionUrl } from './base.js';
+import { baseMealUrl } from './base.js';
 
 const getMeal = async (id) => {
   const result = await fetch(`${baseMealUrl}/lookup.php?i=${id}`);
@@ -6,7 +6,7 @@ const getMeal = async (id) => {
   return meals[0];
 };
 
-export const drawComment = async (id) => {
+const drawComment = async (id) => {
   document.body.style.overflow = 'hidden';
   const modal = document.createElement('div');
   modal.classList.add('popup');
@@ -44,3 +44,4 @@ export const drawComment = async (id) => {
   document.body.appendChild(modal);
 };
 
+export { drawComment };
