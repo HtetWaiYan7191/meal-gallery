@@ -28,21 +28,21 @@ const heartAnimation = (reactionBtn) => {
   });
 };
 
-const createNewApp = async () => {
-  if (appId) {
-    return appId;
-  }
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json; charset=UTF-8',
-    },
-  };
+// const createNewApp = async () => {
+//   if (appId) {
+//     return appId;
+//   }
+//   const requestOptions = {
+//     method: 'POST',
+//     headers: {
+//       'content-type': 'application/json; charset=UTF-8',
+//     },
+//   };
 
-  const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
-  const data = await result.text();
-  return data;
-};
+//   const result = await fetch(`${baseReactionUrl}/apps/`, requestOptions);
+//   const data = await result.text();
+//   return data;
+// };
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
@@ -79,13 +79,20 @@ const sendReactionToApi = async (likeBtn) => {
   });
 };
 
-const showReaction = async (likeBtn, i) => {
+const showReaction = async (reactionCounts) => {
   const reactionNumbers = await getReaction();
-  console.log(reactionNumbers);
+  reactionNumbers.forEach((reactionNumber) => {
+    reactionCounts.forEach((reactionCount) => {
+      if (reactionNumber.item_id === reactionCount.id) {
+        reactionCount.textContent = `${reactionNumber.likes} likes`;
+      }
+    });
+  });
 };
 
-const createMealCard = async (meal, id) => {
-  mealCardContainer.innerHTML += `
+const createMealCard = async (meals) => {
+  meals.forEach((meal, id) => {
+    mealCardContainer.innerHTML += `
     <div class="meal-card col-4" data-id = "${meal.idMeal}">
     <figure class="text-center">
         <img src="${meal.strMealThumb}" alt="meal-image" class="meal-images">
@@ -94,22 +101,24 @@ const createMealCard = async (meal, id) => {
         <h2 class="meal-title">${meal.strMeal}</h2>
         <div class="reaction-container d-flex flex-column">
             <i class="fa-regular fa-heart" id="${id}"></i>
-            <span></span>
+            <span id="${id}" class="reaction-counts"></span>
         </div>
     </figcaption>
     <div class="button-container">
         <button class="comment-button">Comments</button>   
     </div>
 </div>`;
+  });
 
   const likeBtns = document.querySelectorAll('.fa-heart');
+  const reactionCounts = document.querySelectorAll('.reaction-counts');
   likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
-  showReaction()
+  showReaction(reactionCounts);
 };
 
 const fetchMeal = async () => {
-  meals.forEach((meal, id) => createMealCard(meal, id));
+  createMealCard(meals);
 };
 
 await fetchMeal();
