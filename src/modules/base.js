@@ -1,5 +1,5 @@
 const baseMealUrl = 'https://www.themealdb.com/api/json/v1/1';
 const baseReactionUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi';
-const appId = '1q2w3e4r5t6y7u8i9o0p';
+const appId = '42KEY0UYG6OxPtw2i64k';
 
 export { appId, baseMealUrl, baseReactionUrl };
