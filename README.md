@@ -60,6 +60,7 @@ A meal gallery website is an online platform dedicated to showcasing a vast coll
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://htetwaiyan7191.github.io/meal-gallery/dist/)
+- [Video Walkthrough](https://drive.google.com/file/d/1XWaaf755kJ83iqra7Q4fOSdCJTTmrC_z/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -96,9 +97,9 @@ Install this project with:
 
 ### Run tests
 
-To run tests, run the following command: 
+To run tests, run the following command:
 
-* npx hint . 
+* npx hint .
 * npx stylelint "**/*.{css,scss}"
 * npx eslint .
 
@@ -113,10 +114,15 @@ You can deploy this project using: GitHub Pages
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Htet Wai Yan**
-👤 **Aamir Asaram**
 
 - GitHub: [@HtetWaiYan7191](https://github.com/HtetWaiYan7191)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/htet-wai-yan-903354263/)
+
+👤 **Aamir Asaram**
+
 - GitHub: [@aamir-asaram](https://github.com/aamir-asaram)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/aamir-asaram-089802213/)
+- Twitter: [@aaaaamir_](http://twitter.com/aaaaamir_)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -127,6 +133,7 @@ You can deploy this project using: GitHub Pages
 
 
 - [ ] **[add_additional_pages]**
+- [ ] **[add_mobile_version]**
 - [ ] **[add_animation]**
 
 
