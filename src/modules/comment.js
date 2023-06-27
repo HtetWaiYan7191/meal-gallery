@@ -1,4 +1,5 @@
 import { baseMealUrl, baseReactionUrl, appId } from './base.js';
+import countComments from './countComments.js';
 
 const getMeal = async (id) => {
   const result = await fetch(`${baseMealUrl}/lookup.php?i=${id}`);
@@ -50,8 +51,7 @@ const drawForm = (id) => {
     form.reset();
     const commentTitle = document.querySelector('.comment-title');
     const commentList = await getComments(id);
-    console.log(commentList);
-    commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
+    countComments(commentTitle, commentList);
   });
   return form;
 };
@@ -99,7 +99,7 @@ const drawComment = async (id) => {
   commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
   if (Object.keys(commentList)[0] !== 'error') {
-    commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
+    countComments(commentTitle, commentList);
     for (let i = 0; i < Object.keys(commentList).length; i += 1) {
       comments.innerHTML += `
         <p class="comment-item">${commentList[i].creation_date} <b>${commentList[i].username}</b>: ${commentList[i].comment}</p>
