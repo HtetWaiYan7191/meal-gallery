@@ -42,11 +42,9 @@ const drawComment = async (id) => {
   commentTitle.classList.add('comment-title');
   const commentList = await getComments(id);
   console.log(commentList);
-  commentTitle.textContent = `Comments (0)`;
+  commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
-  if (Object.keys(commentList)[0] === 'error') {
-
-  } else {
+  if (!Object.keys(commentList)[0] === 'error') {
     commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
     for (let i = 0; i < Object.keys(commentList).length; i += 1) {
       comments.innerHTML += `
