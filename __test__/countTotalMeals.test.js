@@ -1,5 +1,5 @@
 import { JSDOM } from 'jsdom';
-import countTotalMeals from "../../../src/modules/countTotalMeal";
+import countTotalMeals from "../src/modules/countTotalMeal";
 describe('countTotalMeals', () => {
 const dom = new JSDOM();
 global.document = dom.window.document;
