@@ -30,12 +30,12 @@ const drawForm = (id) => {
     };
     const comments = document.querySelector('.comments');
     const date = new Date();
-    let dateString;
-
-    dateString = `
-    ${date.getFullYear()}-
-    ${('0' + (date.getMonth() + 1)).slice(-2)}-
-    ${('0' + date.getDate()).slice(-2)}
+    let month = date.getMonth() + 1;
+    month = month < 10 ? `0${month}` : month;
+    let day = date.getDate();
+    day = day < 10 ? `0${day}` : day;
+    const dateString = `
+    ${date.getFullYear()}-${month}-${day}
     `;
     comments.innerHTML += `
       <p class="comment-item">${dateString} <b>${commentData.username}</b>: ${commentData.comment}</p>
@@ -52,7 +52,6 @@ const drawForm = (id) => {
     form.reset();
     const commentTitle = document.querySelector('.comment-title');
     const commentList = await getComments(id);
-    console.log(commentList);
     commentTitle.textContent = `Comments (${Object.keys(commentList).length})`;
   });
   return form;
@@ -87,7 +86,6 @@ const drawComment = async (id) => {
   const commentTitle = document.createElement('h3');
   commentTitle.classList.add('comment-title');
   const commentList = await getComments(id);
-  console.log(commentList);
   commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
   if (Object.keys(commentList)[0] !== 'error') {
