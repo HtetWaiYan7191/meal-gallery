@@ -51,7 +51,18 @@ const getReaction = async () => {
   return data;
 };
 
-const sendReactionToApi = async (likeBtn) => {
+const showReaction = async (reactionCounts) => {
+  const reactionNumbers = await getReaction();
+  reactionNumbers.forEach((reactionNumber) => {
+    reactionCounts.forEach((reactionCount) => {
+      if (reactionNumber.item_id === reactionCount.id) {
+        reactionCount.textContent = `${reactionNumber.likes} likes`;
+      }
+    });
+  });
+};
+
+const sendReactionToApi = async (likeBtn, reactionCounts) => {
   likeBtn.addEventListener('click', async (e) => {
     if (!e.target.classList.contains('fa-solid')) {
       e.target.classList.remove('fa-regular');
@@ -71,22 +82,12 @@ const sendReactionToApi = async (likeBtn) => {
       };
 
       await fetch(`${url}`, requestOptions);
-      const reactionNumbers = await getReaction();
-      const currentId = reactionNumbers.length - 1;
-      e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
+      showReaction(reactionCounts);
+      // const reactionNumbers = await getReaction();
+      // const currentId = reactionNumbers.length - 1;
+      // e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
       e.target.classList.remove('fa-bounce');
     }
-  });
-};
-
-const showReaction = async (reactionCounts) => {
-  const reactionNumbers = await getReaction();
-  reactionNumbers.forEach((reactionNumber) => {
-    reactionCounts.forEach((reactionCount) => {
-      if (reactionNumber.item_id === reactionCount.id) {
-        reactionCount.textContent = `${reactionNumber.likes} likes`;
-      }
-    });
   });
 };
 
@@ -112,7 +113,7 @@ const createMealCard = async (meals) => {
 
   const likeBtns = document.querySelectorAll('.fa-heart');
   const reactionCounts = document.querySelectorAll('.reaction-counts');
-  likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn));
+  likeBtns.forEach((likeBtn) => sendReactionToApi(likeBtn, reactionCounts));
   likeBtns.forEach((likeBtn) => heartAnimation(likeBtn));
   showReaction(reactionCounts);
 };
