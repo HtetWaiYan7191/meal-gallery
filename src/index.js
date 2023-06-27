@@ -25,8 +25,6 @@ const createNewApp = async () => {
   return data;
 };
 
-const Id = await createNewApp();
-
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
   const result = await fetch(`${url}`);
