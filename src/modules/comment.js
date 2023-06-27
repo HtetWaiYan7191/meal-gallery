@@ -62,12 +62,19 @@ const drawComment = async (id) => {
   const modal = document.createElement('div');
   modal.classList.add('popup');
   const cardContent = document.createElement('div');
+  cardContent.addEventListener('click', (e) => {
+    console.log(e.target);
+    if (e.target.classList.contains('close')) {
+      document.body.style.overflow = 'auto';
+      modal.remove();
+    }
+  });
   cardContent.classList.add('card-content');
+  const meal = await getMeal(id);
   const close = document.createElement('i');
   close.classList.add('fas', 'fa-times', 'close');
   cardContent.appendChild(close);
-  const meal = await getMeal(id);
-  cardContent.innerHTML = `
+  cardContent.innerHTML += `
     <img src="${meal.strMealThumb}" alt="Image of food">
     <h2>${meal.strMeal}</h2>
     <div id="details">
@@ -79,7 +86,7 @@ const drawComment = async (id) => {
   modal.appendChild(cardContent);
   modal.style.display = 'flex';
   modal.addEventListener('click', (e) => {
-    if (e.target.classList.contains('popup') || e.target.classList.contains('close')) {
+    if (e.target.classList.contains('popup')) {
       document.body.style.overflow = 'auto';
       modal.remove();
     }
@@ -89,6 +96,7 @@ const drawComment = async (id) => {
   const commentTitle = document.createElement('h3');
   commentTitle.classList.add('comment-title');
   const commentList = await getComments(id);
+  console.log(commentList);
   commentTitle.textContent = 'Comments (0)';
   cardContent.appendChild(commentTitle);
   if (Object.keys(commentList)[0] !== 'error') {

@@ -108,7 +108,7 @@ form > * {
 .close {
   position: relative;
   top: 0;
-  right: 0;
+  left: 44%;
   padding: 1rem;
   font-size: 2rem;
   cursor: pointer;
@@ -123,11 +123,10 @@ form > * {
 }
 
 .card-content img {
-  height: 30%;
-  width: 90%;
+  height: 35%;
+  width: 70%;
   border-radius: 10px;
-  object-fit: cover;
-  margin-top: 40px;
+  margin-top: 0;
 }
 
 .card-content h3 {
