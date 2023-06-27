@@ -55,27 +55,29 @@ const getReaction = async () => {
 
 const sendReactionToApi = async (likeBtn) => {
   likeBtn.addEventListener('click', async (e) => {
-    e.target.classList.remove('fa-regular');
-    e.target.classList.add('fa-bounce');
-    e.target.classList.add('fa-solid');
-    e.target.classList.add('red');
-    // id = start from 0 ;
-    const reactions = { item_id: `${e.target.id}` };
-    const url = `${baseReactionUrl}/apps/${appId}/likes`;
+    if (!e.target.classList.contains('fa-solid')) {
+      e.target.classList.remove('fa-regular');
+      e.target.classList.add('fa-bounce');
+      e.target.classList.add('fa-solid');
+      e.target.classList.add('red');
+      // id = start from 0 ;
+      const reactions = { item_id: `${e.target.id}` };
+      const url = `${baseReactionUrl}/apps/${appId}/likes`;
 
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json; charset=UTF-8',
-      },
-      body: JSON.stringify(reactions),
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(reactions),
+      };
+
+      await fetch(`${url}`, requestOptions);
+      const reactionNumbers = await getReaction();
+      const currentId = reactionNumbers.length - 1;
+      e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
+      e.target.classList.remove('fa-bounce');
     };
-
-    await fetch(`${url}`, requestOptions);
-    const reactionNumbers = await getReaction();
-    const currentId = reactionNumbers.length - 1;
-    e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
-    e.target.classList.remove('fa-bounce');
   });
 };
 
