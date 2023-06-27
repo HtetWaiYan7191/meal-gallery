@@ -158,10 +158,6 @@ form > * {
   height: 30px;
 }
 
-.comment-item:nth-child(2n) {
-  background-color: var(--accent);
-}
-
 form input[type="submit"] {
   width: 50%;
   margin: 0 auto;
