@@ -11,7 +11,7 @@ global.document = dom.window.document;
 
         countComments(commentTitle, comment);
 
-        expect(counterMeal.textContent).toBe(`Comments(${comment.length})`);
+        expect(commentTitle.textContent).toEqual(`Comments (${comment.length})`);
       });
 
 })
