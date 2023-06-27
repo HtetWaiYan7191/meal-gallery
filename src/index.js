@@ -53,7 +53,6 @@ const sendReactionToApi = async (likeBtn, reactionCounts) => {
       e.target.classList.add('fa-bounce');
       e.target.classList.add('fa-solid');
       e.target.classList.add('red');
-      // id = start from 0 ;
       const reactions = { item_id: `${e.target.id}` };
       const url = `${baseReactionUrl}/apps/${appId}/likes`;
 
@@ -67,9 +66,6 @@ const sendReactionToApi = async (likeBtn, reactionCounts) => {
 
       await fetch(`${url}`, requestOptions);
       showReaction(reactionCounts);
-      // const reactionNumbers = await getReaction();
-      // const currentId = reactionNumbers.length - 1;
-      // e.target.nextElementSibling.textContent = `${reactionNumbers[currentId].likes} likes`;
       e.target.classList.remove('fa-bounce');
     }
   });
@@ -91,7 +87,7 @@ const createMealCard = async (meals) => {
     </figcaption>
 
     <div class="button-container d-flex flex-column justify-content-around">
-        <button class="comment-button" id="commentBtn">Comments</button>   
+        <button class="comment-button" id="commentBtn">Comments</button>
     </div>
 </div>`;
   });
