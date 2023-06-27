@@ -44,4 +44,4 @@ const drawComment = async (id) => {
   document.body.appendChild(modal);
 };
 
-export { drawComment };
+export default drawComment;

@@ -1,8 +1,6 @@
 import './style.css';
-import { drawComment } from './modules/comment.js';
+import drawComment from './modules/comment.js';
 import { appId, baseMealUrl, baseReactionUrl } from './modules/base.js';
-
-console.log(baseMealUrl);
 
 const mealCardContainer = document.querySelector('.meal-card-container');
 let meals = [];
@@ -28,7 +26,6 @@ const createNewApp = async () => {
 };
 
 const Id = await createNewApp();
-console.log(Id);
 
 const getReaction = async () => {
   const url = `${baseReactionUrl}/apps/${appId}/likes`;
